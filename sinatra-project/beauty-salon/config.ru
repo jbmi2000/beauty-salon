@@ -6,6 +6,6 @@ end
 
 use Rack::MethodOverride
 use UsersController
-use CustomersController
 use AppointmentsController
+use CustomersController
 run ApplicationController
