@@ -31,10 +31,10 @@
   </head>
   <body>
     <div class="wrapper">
-      <p class="links"><a href="#"class="logout">Log Out</a></p>
+      <p class="links"><a href="/logout"class="logout">Log Out</a></p>
       <p class="links"><a href="/users">All Users</a>
       <p class="links"><a href="#">New Customers</a>
-      <p class="links"><a href="#">My Customers</a>
+      <p class="links"><a href="/users/<%=Helpers.current_user(session).id if Helpers.is_logged_in? %>">My Customers</a>
       <p class="links"><a href="#">All Customers</a>
 
         <%= yield %>
