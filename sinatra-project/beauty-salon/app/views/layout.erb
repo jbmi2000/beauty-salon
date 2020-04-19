@@ -12,9 +12,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
+
+    <style>
+
+    .links {
+      float: right;
+      display: inline: 0;
+      padding-left: 0;
+      margin-right: 4px;
+    }
+
+    .links a:link, .links a:visited, .links a:hover,.liks a:active {
+      color: darkblue
+    
+    }
+    </style>
+
   </head>
   <body>
     <div class="wrapper">
+      <p class="links"><a href="#"class="logout">Log Out</a></p>
+      <p class="links"><a href="#">All Users</a>
+      <p class="links"><a href="#">New Customers</a>
+      <p class="links"><a href="#">My Customers</a>
+      <p class="links"><a href="#">All Customers</a>
 
         <%= yield %>
 
