@@ -22,7 +22,7 @@
       margin-right: 4px;
     }
 
-    .links a:link, .links a:visited, .links a:hover,.liks a:active {
+    .links a:link, .links a:visited, .links a:hover,.links a:active {
       color: darkblue
     
     }
@@ -34,7 +34,7 @@
     <% if Helpers.is_logged_in?(session)%>
       <p class="links"><a href="/logout"class="logout">Log Out</a></p>
       <p class="links"><a href="/users">All Users</a>
-      <p class="links"><a href="#">New Customers</a>
+      <p class="links"><a href="/customers/new">New Customers</a>
       <p class="links"><a href="/users/<%=Helpers.current_user(session).id if Helpers.is_logged_in?(session) %>">My Customers</a>
       <p class="links"><a href="#">All Customers</a>
     <%end%>
