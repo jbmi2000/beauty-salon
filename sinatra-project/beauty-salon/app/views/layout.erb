@@ -38,6 +38,7 @@
       <p class="links"><a href="/users/<%=Helpers.current_user(session).id if Helpers.is_logged_in?(session) %>">My Customers</a>
       <p class="links"><a href="#">All Customers</a>
     <%end%>
+    <h1><center>Beauty Salon Stylist Roster</center></h1>
         <%= yield %>
 
       <footer class="branding">
