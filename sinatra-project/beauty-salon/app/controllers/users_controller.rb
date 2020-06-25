@@ -38,13 +38,12 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-       user = User.create(params)  #no instance variable needed since redirect triggers a new request meaning no access to the instance variable going forward
-       binding.pry
-       if user.valid?
-        session[:user_id] = user.id
-        redirect to "/users/#{user.id}"
+       @user = User.create(username: params[:username], email: params[:email], password: params[:password])  # @user to present errors if signup exists or is invalid
+       if @user.valid?
+        session[:user_id] = @user.id
+        redirect to "/users/#{@user.id}"
        else
-        redirect to '/signup'
+        erb :'users/signup' #redirect to '/signup'
        end
     end
 

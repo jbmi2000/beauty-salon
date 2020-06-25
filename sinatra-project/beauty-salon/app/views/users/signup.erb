@@ -1,6 +1,14 @@
 <h4>Sign Up</h4><br />
 
-<form action="/register" method="POST">
+<%if @user && @user.errors.any? %>
+    <% @user.errors.full_messages.each do |m| %>
+        <p class="danger"><%= m %></p>
+
+    <% end %>
+
+<% end %>
+
+<form action="/signup" method="POST">
     <input type="text" placeholder="Username" name="username" /><br /><br />
     <input type="email" placeholder="Email Address" name="email" /><br /><br />
     <input type="password" placeholder="Password" name="password" /><br /><br />
