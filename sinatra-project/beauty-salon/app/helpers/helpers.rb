@@ -1,7 +1,7 @@
 class Helpers
 
     def self.current_user(session)
-        User.find_by(id: session[:user_id])  
+        @u = User.find_by(id: session[:user_id])  
         #currently logged in user from session hash
     end
 

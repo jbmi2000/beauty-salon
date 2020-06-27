@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
     end
     
     post '/customers/' do
-        binding.pry
+       
     
     end
 

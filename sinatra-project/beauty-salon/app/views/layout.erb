@@ -32,11 +32,11 @@
   <body>
     <div class="wrapper">
     <% if Helpers.is_logged_in?(session)%>
-      <p class="links"><a href="/logout"class="logout">Log Out</a></p>
-      <p class="links"><a href="/users">All Users</a>
-      <p class="links"><a href="/customers/new">New Customers</a>
-      <p class="links"><a href="/users/<%=Helpers.current_user(session).id if Helpers.is_logged_in?(session) %>">My Customers</a>
-      <p class="links"><a href="#">All Customers</a>
+      <h6 class="links"><a href="/logout"class="logout">Log Out</a></h6>
+      <h6 class="links"><a href="/users">All Users</a></h6>
+      <h6 class="links"><a href="/customers/new">New Customers</a></h6>
+      <h6 class="links"><a href="/users/<%=Helpers.current_user(session).id if Helpers.is_logged_in?(session) %>">My Customers</a></h6>
+      <h6 class="links"><a href="#">All Customers</a></h6><br /> <br />
     <%end%>
     <h1><center>Beauty Salon Stylist Roster</center></h1>
         <%= yield %>
