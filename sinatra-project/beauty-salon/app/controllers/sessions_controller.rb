@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     get '/login' do
         if Helpers.is_logged_in?(session)
             user = Helpers.current_user(session)
-            redirect to :"/users/#{user.id}"
+            redirect '/dashboard'
             
         end
         erb :'users/login'
@@ -21,10 +21,10 @@ class SessionsController < ApplicationController
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id  # keeping track of user for session
-            redirect to "users/#{user.id}"
+            redirect '/dashboard'
             
         else
-            @error = "Invalid Credentiails"
+            @error = "Invalid Credentials"
             erb :'users/login'  #redirect to '/signup'
 
         end

@@ -10,4 +10,10 @@ class Helpers
         #is there a user ID key in the session hash
     end
 
+    def current_user
+        User.find_by(id: session[user_id])
+
+    end
+
+
 end
