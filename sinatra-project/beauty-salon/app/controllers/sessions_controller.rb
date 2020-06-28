@@ -34,8 +34,8 @@ class SessionsController < ApplicationController
     post '/signup' do
        @user = User.create(username: params[:username], email: params[:email], password: params[:password])  # @user to present errors if signup exists or is invalid
        if @user.valid?
-        session[:user_id] = @user.id
-        redirect to "/users/#{@user.id}"
+        #session[:user_id] = @user.id
+        redirect '/users/login'
        else
         erb :'users/signup' #redirect to '/signup'
        end
