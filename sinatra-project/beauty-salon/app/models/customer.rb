@@ -1,5 +1,9 @@
 class Customer < ActiveRecord::Base
 
-    belongs_to :user
+    has_many :appointments
+    has_many :users, through:appointments
+    
+    # belongs_to :user  
+    # has_one :user           
 
 end
