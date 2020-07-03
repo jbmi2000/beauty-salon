@@ -6,14 +6,15 @@ class CustomersController < ApplicationController
     end
 
     post '/customers/new' do
-        if Helpers.is_logged_in(session)
+         if Helpers.is_logged_in(session)
             @customer=Customer.create(name: params[:name], phone: params[:phone], notes: params[:notes]) 
-        end
+         end
         # if customer.valid?
         #     redirect '/customers'
-        
-            erb :'customers/show'
+       
+        erb :'customers/show'
     end 
+
               
        
     get '/customers' do

@@ -14,10 +14,9 @@
 ActiveRecord::Schema.define(version: 30000000000001) do
 
   create_table "appointments", force: :cascade do |t|
-    t.string  "name"
-    t.string  "time"
-    t.string  "customer_id"
-    t.integer "user_id"
+    t.integer  "user_id"
+    t.integer  "customer_id"
+    t.datetime "appointment_date"
   end
 
   create_table "customers", force: :cascade do |t|
