@@ -8,5 +8,9 @@ ActiveRecord::Base.establish_connection(
   :database => "db/#{ENV['SINATRA_ENV']}.new"
 )
 
+if ENV['SINATRA_ENV']=='development'
+  require_relative '../secrets'
+end
+
 require './app/controllers/application_controller'
 require_all 'app'
