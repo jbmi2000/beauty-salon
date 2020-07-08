@@ -18,7 +18,6 @@ class CustomersController < ApplicationController
         #  end
         # if customer.valid?
          redirect '/customers'
-         binding.pry
         # erb :'/customers'
     end 
 
@@ -26,7 +25,13 @@ class CustomersController < ApplicationController
         @user=Helpers.current_user(session)
         @customers = Customer.all 
         erb :'/customers/index'
-    end          
+    end 
+    
+    delete '/customers/:id' do
+        c = Customer.find(params[:id])
+        c.destroy
+        redirect '/customers'
+    end
        
  
 
