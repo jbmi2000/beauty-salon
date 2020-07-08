@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     get '/signup' do
         if Helpers.is_logged_in?(session)
             user = Helpers.current_user(session)
-            redirect to :"/users/#{user.id}"
+            redirect '/users/#{user.id}'
         end
         erb :'users/signup'
     end
@@ -45,7 +45,7 @@ class SessionsController < ApplicationController
         if Helpers.is_logged_in?(session) && User.find_by(id: params[:id])
             @user = User.find_by(id: params[:id])
         else
-            redirect to '/'
+            redirect '/'
         end
         erb :'users/show'
     
@@ -53,7 +53,7 @@ class SessionsController < ApplicationController
 
     get '/logout' do 
         session.clear
-        redirect to '/'
+        redirect '/'
     end
 
 end

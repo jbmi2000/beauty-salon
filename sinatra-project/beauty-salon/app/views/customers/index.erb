@@ -1,9 +1,9 @@
 <br /><h3>Customers List</h3><br />
-<%=@user.username%>
+
 
 <ul>
 <% @customers.each do |customer|%>
-    <p><a href="/dashboard"> <%= customer.name %> </a></p>
-    <%end%>
+    <li><a href="/customers/show"><%= customer.name %></a></li>
+<%end%>
     
 </ul>
