@@ -1,13 +1,16 @@
 <br /><h3>Customers List</h3><br />
 
-
+<h5>
 <ul>
 <% @customers.each do |customer|%>
-    <li><a href="/customers/show"><%= customer.name %></a></li>
+    <li><a href="/customers/show"><%= customer.name %></a>--<a href="/customers/<%= customer.id %>/edit">Edit</a></li>
     <form action="/customers/<%=customer.id%>" method="POST">
         <input type="hidden" name="_method" value="Delete">
         <input type="submit" value = "Delete">
     </form>
 <%end%>
     
+    
 </ul>
+
+</h5>

@@ -26,6 +26,17 @@ class CustomersController < ApplicationController
         @customers = Customer.all 
         erb :'/customers/index'
     end 
+
+    get '/customers/:id/edit' do
+        @c=Customer.find(params[:id])
+        erb :'/customers/edit'
+
+    end
+
+    patch '/customers/:id' do
+        @c=Customer.find(params[:id])
+      end
+
     
     delete '/customers/:id' do
         c = Customer.find(params[:id])
