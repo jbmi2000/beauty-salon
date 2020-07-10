@@ -3,9 +3,9 @@
 
 <form action="/customers/<%=@c.id%>" method = "POST">
     <input type ="hidden" name="_method" value="PATCH">
-    <input type = "text" value ="<%= @c.name%>">
-    <input type = "text" value ="<%= @c.phone%>">
-    <input type = "text" value ="<%= @c.notes%>">
+    <input type = "text" name="name" value ="<%= @c.name%>">
+    <input type = "text" name="phone" value ="<%= @c.phone%>">
+    <input type = "text" name="notes" value ="<%= @c.notes%>">
     <input type = "submit" value = "Update" >
 
 </form>

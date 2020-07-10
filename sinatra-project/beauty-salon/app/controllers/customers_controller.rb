@@ -27,6 +27,14 @@ class CustomersController < ApplicationController
         erb :'/customers/index'
     end 
 
+    get '/customers/show' do
+        @user=Helpers.current_user(session)
+        @c=Customer.find_by(@user.id)
+       # binding.pry
+        erb :'/customers/show'
+        
+      end
+
     get '/customers/:id/edit' do
         @c=Customer.find(params[:id])
         erb :'/customers/edit'
@@ -35,6 +43,10 @@ class CustomersController < ApplicationController
 
     patch '/customers/:id' do
         @c=Customer.find(params[:id])
+        @c.update(name: params[:name], phone: params[:phone], notes: params[:notes])
+        
+        # binding.pry
+        redirect '/customers/index'
       end
 
     

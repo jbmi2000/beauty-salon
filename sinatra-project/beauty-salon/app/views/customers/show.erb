@@ -1,3 +1,17 @@
 <h3><%= @user.username %></h3>
 
-<h4>Your customers:</h4>
+<h4>Your customer: <%= @c.name %></h4><br />
+
+<h6>
+<form action="/customers/show" method="POST">
+    <label>Name:</label><%= @c.name %>----<a href="/customers/<%= @c.id %>/edit">Edit</a><br />
+    <label>Phone:</label><%= @c.phone%><br />
+    <label>Notes:</label><%= @c.notes%><br />
+    
+</form>
+<form action="/customers/<%=@c.id%>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+
+</form>
+</h6>

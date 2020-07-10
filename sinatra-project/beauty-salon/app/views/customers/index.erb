@@ -1,6 +1,6 @@
-<br /><h3>Customers List</h3><br />
+<br /><h3>Customers List</h3><h6><a href="/customers/new">Add New Customer</a></h6><br />
 
-<h5>
+<h6>
 <ul>
 <% @customers.each do |customer|%>
     <li><a href="/customers/show"><%= customer.name %></a>--<a href="/customers/<%= customer.id %>/edit">Edit</a></li>
@@ -13,4 +13,4 @@
     
 </ul>
 
-</h5>
+</h6>
