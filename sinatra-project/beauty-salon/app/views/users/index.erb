@@ -2,7 +2,7 @@
 
 <ul>
 <% @users.each do |user|%>
-    <p><a href="/dashboard"> <%= user.username %> </a></p>
+    <li><p><a href="/dashboard/<%=user.id%>"> <%= user.username %> </a></p></li>
     <%end%>
     
 </ul>

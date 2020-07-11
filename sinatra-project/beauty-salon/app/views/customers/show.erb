@@ -2,16 +2,18 @@
 
 <h4>Your customer: <%= @c.name %></h4><br />
 
-<h6>
-<form action="/customers/show" method="POST">
-    <label>Name:</label><%= @c.name %>----<a href="/customers/<%= @c.id %>/edit">Edit</a><br />
-    <label>Phone:</label><%= @c.phone%><br />
-    <label>Notes:</label><%= @c.notes%><br />
-    
-</form>
+
+<form action="/customers/<%= @c.id %>/show" method="POST">
+<h6><label>Name:  </label><%= @c.name %>--<a href="/customers/<%= @c.id %>/edit">Edit</a><br />
+    <label>Phone:  </label><%= @c.phone%><br />
+    <label>Notes:  </label><%= @c.notes%><br />
+</h6>    
+</form><br />
 <form action="/customers/<%=@c.id%>" method="POST">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete">
+    <input type="submit" value="Delete"><br />
+    <h6><a href="/customers/index">Return to Customers List</a></h6>
 
 </form>
-</h6>
+
+

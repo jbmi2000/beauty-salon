@@ -1,11 +1,17 @@
 
 
-
+<br />
+<br />
 <form action="/customers/<%=@c.id%>" method = "POST">
     <input type ="hidden" name="_method" value="PATCH">
     <input type = "text" name="name" value ="<%= @c.name%>">
     <input type = "text" name="phone" value ="<%= @c.phone%>">
     <input type = "text" name="notes" value ="<%= @c.notes%>">
-    <input type = "submit" value = "Update" >
+    <input type = "submit" value = "Update" > or <h6><a href="/customers/<%=@c.id%>/show">Cancel Edit</a></h6>
 
+</form>
+<form action="/customers/<%=@c.id%>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+    
 </form>

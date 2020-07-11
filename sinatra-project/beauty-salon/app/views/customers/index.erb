@@ -3,12 +3,13 @@
 <h6>
 <ul>
 <% @customers.each do |customer|%>
-    <li><a href="/customers/show"><%= customer.name %></a>--<a href="/customers/<%= customer.id %>/edit">Edit</a></li>
+    <li><a href="/customers/<%= customer.id%>/show"><%= customer.name %></a>--<a href="/customers/<%= customer.id %>/edit">Edit</a></li>
     <form action="/customers/<%=customer.id%>" method="POST">
         <input type="hidden" name="_method" value="Delete">
         <input type="submit" value = "Delete">
     </form>
 <%end%>
+    <a href="/dashboard/:id">Return to Stylist Dashboard</a>
     
     
 </ul>
