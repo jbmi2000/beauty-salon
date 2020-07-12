@@ -1,8 +1,9 @@
 class CustomersController < ApplicationController
 
     get '/customers' do
-        # binding.pry
-        @customers=Customer.all
+         # binding.pry
+         @user = Helpers.current_user(session)
+        @customers=@user.customers
         erb :'/customers/index'
     end
     
