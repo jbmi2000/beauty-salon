@@ -7,11 +7,10 @@
     <input type = "text" name="name" value ="<%= @c.name%>">
     <input type = "text" name="phone" value ="<%= @c.phone%>">
     <input type = "text" name="notes" value ="<%= @c.notes%>">
-    <input type = "submit" value = "Update" > or <h6><a href="/customers/<%=@c.id%>/show">Cancel Edit</a></h6>
-
+    <input type = "submit" value = "Update" > or <br /><h6>
 </form>
 <form action="/customers/<%=@c.id%>" method="POST">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete">
-    
+    <input type="submit" value="Delete"><br /><br />
+    <a href="/customers/<%=@c.id%>/show">Cancel Edit</a></h6>
 </form>

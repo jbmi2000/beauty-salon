@@ -1,7 +1,11 @@
 class User < ActiveRecord::Base
 
-    has_many :appointments
-    has_many :customers, through: :appointments
+     has_many :customers
+     has_many :appointments
+  #  has_many :customers, through: :appointments
+
+#   has_many :appointments
+#   has_many :customers, through: :appointments
 
     validates :username, presence: true, uniqueness: true
     validates :email, presence: true, uniqueness: true

@@ -1,8 +1,13 @@
 <br />
-<h3>Create an Appointment</h3>
+<h3><%=@user.username%>
 <br />
+Schedule an Appointment</h3>
+<br />
+<p>Customer: <%=@c.name%></p>
+
 <form action="/appointments" method="POST">
-    <input type=text name="<%=@customer.name %>" placeholder="Customer Name">
+    <input type="text" name="customer_id" value="<%=@c.name%>">     
+    <input type=date name="date" >
     <input type=submit value="Create">
 
 </form>

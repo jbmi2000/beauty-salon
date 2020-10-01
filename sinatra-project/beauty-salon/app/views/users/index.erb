@@ -1,9 +1,11 @@
 <br /><h3>All Users</h3>
 
+
 <ul>
 <% @users.each do |user|%>
-    <li><p><a href="/dashboard/<%=user.id%>"> <%= user.username %> </a></p></li>
+    <li><h5<p><a href="/dashboard/<%=user.id%>"> <%= user.username %> </a></p></h5></li>
+   
     <%end%>
-    
+        
 </ul>
 

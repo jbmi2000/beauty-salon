@@ -2,8 +2,10 @@ class CustomersController < ApplicationController
 
     get '/customers' do
          # binding.pry
-         @user = Helpers.current_user(session)
-        @customers=@user.customers
+        @user = Helpers.current_user(session)
+        # binding.pry
+        @customers=@user.customers  # for displaying only the current user's customers
+                
         erb :'/customers/index'
     end
     
@@ -15,7 +17,8 @@ class CustomersController < ApplicationController
     post '/customers' do
         # binding.pry
         #  if Helpers.is_logged_in?(session)
-        @user = Helpers.current_user(session)   
+        @user = Helpers.current_user(session) 
+        # binding.pry  
         @customer=Customer.create(user_id: @user.id, name: params[:name], phone: params[:phone], notes: params[:notes]) 
         #  end
         # if customer.valid?
@@ -25,8 +28,9 @@ class CustomersController < ApplicationController
 
     get '/customers/index' do
         @user=Helpers.current_user(session)
-        #  binding.pry
-        @customers = Customer.all
+         # binding.pry
+        #@customers = Customer.user_id
+        @customers = @user.customers
         # @customers = Customer.find_by(@user.id)
         erb :'/customers/index'
     end 
@@ -40,14 +44,14 @@ class CustomersController < ApplicationController
         
       end
 
-      get '/customers/:id/show' do
-        @user=Helpers.current_user(session)
-         # binding.pry
-        @c=Customer.find(params[:id])
+    #   get '/customers/:id/show' do
+    #     @user=Helpers.current_user(session)
+    #      # binding.pry
+    #     @c=Customer.find(params[:id])
         
-        erb :'/customers/show'
+    #     erb :'/customers/show'
         
-      end
+    #   end
 
     get '/customers/:id/edit' do
         @c=Customer.find(params[:id])
@@ -65,7 +69,7 @@ class CustomersController < ApplicationController
         @c.update(name: params[:name], phone: params[:phone], notes: params[:notes])
         
         # binding.pry
-        redirect '/customers/index'
+        redirect "/customers/#{@c.id}/show"
       end
 
     

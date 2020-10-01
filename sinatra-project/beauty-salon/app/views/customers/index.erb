@@ -1,17 +1,14 @@
-<br /><h3>Customers List</h3><h6><a href="/customers/new">Add New Customer</a></h6><br />
+<br /><h3>Customers List - <%= @user.username %> </h3><h6><a href="/customers/new">Add New Customer</a></h6><br />
 
 <h6>
-<ul>
 <% @customers.each do |customer|%>
-    <li><a href="/customers/<%= customer.id%>/show"><%= customer.name %></a>--<a href="/customers/<%= customer.id %>/edit">Edit</a></li>
+    <!--<%=customer.name%>-->
+    <a href="/customers/<%= customer.id%>/show"><%= customer.name %></a>--<a href="/customers/<%= customer.id %>/edit">Edit</a>
     <form action="/customers/<%=customer.id%>" method="POST">
-        <input type="hidden" name="_method" value="Delete">
-        <input type="submit" value = "Delete">
+         <input type="hidden" name="_method" value="Delete">
+         <input type="submit" value = "Delete">
     </form>
 <%end%>
     <a href="/dashboard/:id">Return to Stylist Dashboard</a>
-    
-    
-</ul>
-
 </h6>
+

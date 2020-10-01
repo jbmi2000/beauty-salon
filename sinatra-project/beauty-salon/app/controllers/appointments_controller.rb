@@ -1,22 +1,28 @@
 class AppointmentsController < ApplicationController
 
-    get '/appointments/new' do
+    get '/customers/:id/new' do
         @user = Helpers.current_user(session)
+         
+        @c=Customer.find(params[:id])
+        # @c.split().find_by(#{@c.id})
         # binding.pry
-        @customer=Customer.first
         erb :'/appointments/new'
       end
 
     get '/appointments' do
         
         erb :'/appointments/show'
-    end
+      end
 
     post '/appointments' do
+        
          @user = Helpers.current_user(session)
-         @c=Customer.find_by(params[:id])
+         @c=params[:customer_id]
+         #binding.pry
+        # @c=Customer.find(:id)
+        # @c.appointments.create()
         # @u=User.id
-        binding.pry
+        
         # @a = Appointment.create(@user_id: @u, @customer_id: @c, appointment_date: Date.today)
     redirect '/appointments'
     end
