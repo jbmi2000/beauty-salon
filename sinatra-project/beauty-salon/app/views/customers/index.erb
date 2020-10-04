@@ -1,4 +1,4 @@
-<br /><h3>Customers List - <%= @user.username %> </h3><h6><a href="/customers/new">Add New Customer</a></h6><br />
+<br /><h3>Customers List - <%= @user.username %> </h3><h6><a href="/customers/new">Add New Customer</a>  or  <a href="/dashboard/:id">Return to Stylist Dashboard</a></h6><br />
 
 <h6>
 <% @customers.each do |customer|%>
@@ -9,6 +9,6 @@
          <input type="submit" value = "Delete">
     </form>
 <%end%>
-    <a href="/dashboard/:id">Return to Stylist Dashboard</a>
+    
 </h6>
 

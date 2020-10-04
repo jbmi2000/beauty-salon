@@ -1,10 +1,10 @@
-<br /><br /><h3>Welcome to your Stylist Dashboard <%= @user.username %>!</h3><br />
-<h5>What would you like to?</h5><br />
+<br /><br /><h3>Welcome to your Stylist Dashboard, <%= @user.username %>!</h3><br />
+<h5>What would you like to do?</h5><br />
 
 <form action="/customers/new" method="post">
-    <h6><a href ="/customers">View my current customer list?</a></h6><br />
-    <h6><a href ="/customers/new">Create a new customer?</a></h6><br />
-    <h6><a href ="/appointments">View my appointments?</a></h6><br />
-    <h6><a href ="/appointments/new">Schedule an appointment?</a></h6><br />
+    <h6><a href ="/customers">View my current customer list</a></h6><br />
+    <h6><a href ="/customers/new">Create a new customer</a></h6><br />
+   <!-- <h6><a href ="/appointments">View my appointment</a></h6><br />
+    <h6><a href ="/appointments/new">Schedule an appointment</a></h6><br /> -->
     <h6><a href ="/logout">Log Out </a></h6>
 </form>

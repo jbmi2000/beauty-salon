@@ -7,12 +7,12 @@
 <h6><label>Name:  </label><%= @c.name %>--<a href="/customers/<%= @c.id %>/edit">Edit</a><br />
     <label>Phone:  </label><%= @c.phone%><br />
     <label>Notes:  </label><%= @c.notes%><br />
-    <a href="/customers/<%= @c.id %>/new">Create an appointment</a>
+   <!-- <a href="/customers/<%= @c.id %>/new">Create an appointment</a> -->
 </h6>    
 </form><br />
 <form action="/customers/<%=@c.id%>" method="POST">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete"><br />
+    <input type="submit" value="Delete"><br /><br />
     <h6><a href="/customers/index">Return to Customers List</a></h6>
 
 </form>
