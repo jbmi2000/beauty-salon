@@ -21,8 +21,11 @@ class CustomersController < ApplicationController
         # binding.pry  
         @customer=Customer.create(user_id: @user.id, name: params[:name], phone: params[:phone], notes: params[:notes]) 
         #  end
-        # if customer.valid?
-         redirect '/customers'
+        if customer.valid?
+         redirect "/customers/#{@customer.id}/show"
+        else
+            redirect '/customers/new'
+        end
         # erb :'/customers'
     end 
 
@@ -54,8 +57,13 @@ class CustomersController < ApplicationController
     #   end
 
     get '/customers/:id/edit' do
-        @c=Customer.find(params[:id])
-        erb :'/customers/edit'
+        if Helpers.is_loggedin(session)
+            @c=Customer.find(params[:id])
+            Helpers.user_customer
+            erb :'/customers/edit'
+        else
+            redirect '/login'
+        end
 
     end
 
@@ -66,6 +74,7 @@ class CustomersController < ApplicationController
 
     patch '/customers/:id' do
         @c=Customer.find(params[:id])
+        Helpers.user_customer
         @c.update(name: params[:name], phone: params[:phone], notes: params[:notes])
         
         # binding.pry
@@ -74,8 +83,9 @@ class CustomersController < ApplicationController
 
     
     delete '/customers/:id' do
-        c = Customer.find(params[:id])
-        c.destroy
+        @c = Customer.find(params[:id])
+        Helpers.user_customer
+        @c.destroy
         redirect '/customers'
     end
        

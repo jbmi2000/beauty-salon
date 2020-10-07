@@ -15,5 +15,21 @@ class Helpers
 
     end
 
+    #TRying to validate user to allow for edit, update, delete actions on information
+
+   # @c.user == current_user if true then perform action else redirect back to show page
+
+    def self.user_customer
+     if @c.user != current_user
+        redirect "/customers/#{@customers.id}/show"
+        #do something
+       
+    end
+    end
+
+    # username
+    # customer
+
+
 
 end
