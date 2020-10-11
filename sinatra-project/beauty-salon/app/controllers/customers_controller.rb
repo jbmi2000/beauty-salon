@@ -1,92 +1,126 @@
 class CustomersController < ApplicationController
 
     get '/customers' do
-         # binding.pry
-        @user = Helpers.current_user(session)
-        # binding.pry
-        @customers=@user.customers  # for displaying only the current user's customers
-                
-        erb :'/customers/index'
+        if Helpers.is_logged_in?(session)
+            @user = Helpers.current_user(session)
+            @customers=@user.customers  # for displaying only the current user's customers
+            erb :'/customers/index'
+        else
+            @error = "You must be logged in to view this page!"
+            erb :'/users/login'
+            #redirect '/login'
+        end
     end
     
     get '/customers/new' do
-        @user = Helpers.current_user(session)
-        erb :'/customers/new'
+        if Helpers.is_logged_in?(session)
+            @user = Helpers.current_user(session)
+            erb :'/customers/new'
+        else
+            @error = "You must be logged in to view this page!"
+            erb :'/users/login'
+            #redirect '/login'
+           # redirect '/users/login'
+        end
     end
 
     post '/customers' do
-        # binding.pry
-        #  if Helpers.is_logged_in?(session)
-        @user = Helpers.current_user(session) 
-        # binding.pry  
-        @customer=Customer.create(user_id: @user.id, name: params[:name], phone: params[:phone], notes: params[:notes]) 
-        #  end
-        if customer.valid?
-         redirect "/customers/#{@customer.id}/show"
-        else
+        if Helpers.is_logged_in?(session)
+            @user = Helpers.current_user(session) 
+            @customer=Customer.create(user_id: @user.id, name: params[:name], phone: params[:phone], notes: params[:notes]) 
+                if @customer.valid?
+                    redirect "/customers/#{@customer.id}/show"
+                else
             redirect '/customers/new'
+            end
+        else
+            redirect '/login'
         end
         # erb :'/customers'
     end 
 
     get '/customers/index' do
-        @user=Helpers.current_user(session)
-         # binding.pry
-        #@customers = Customer.user_id
-        @customers = @user.customers
-        # @customers = Customer.find_by(@user.id)
-        erb :'/customers/index'
+        if Helpers.is_logged_in?(session)
+            @user=Helpers.current_user(session)
+            @customers = @user.customers
+            # @customers = Customer.find_by(@user.id)
+            erb :'/customers/index'
+        else
+            @error = "You must be logged in to view this page!"
+            erb :'/users/login'
+            # redirect '/login'
+        end
     end 
 
     get '/customers/:id/show' do
-        @user=Helpers.current_user(session)
-        
-        @c=Customer.find(params[:id])
-        
-        erb :'/customers/show'
+        if Helpers.is_logged_in?(session)
+            @user=Helpers.current_user(session)
+            @c=@user.customers
+            if !(@c.ids.to_s.include?(params[:id]))
+                @error = "This is not your customer."
+                redirect '/customers/index'               
+            else
+                @cus=Customer.find(params[:id])
+                erb :'/customers/show'
+            end
+        else
+            @error = "You must be logged in to view this page!"
+            erb :'/users/login'
+            # redirect '/login'
+        end
         
       end
 
-    #   get '/customers/:id/show' do
-    #     @user=Helpers.current_user(session)
-    #      # binding.pry
-    #     @c=Customer.find(params[:id])
-        
-    #     erb :'/customers/show'
-        
-    #   end
-
     get '/customers/:id/edit' do
-        if Helpers.is_loggedin(session)
-            @c=Customer.find(params[:id])
-            Helpers.user_customer
-            erb :'/customers/edit'
+       
+        if Helpers.is_logged_in?(session)
+            @user=Helpers.current_user(session)
+            @c=@user.customers
+             # binding.pry
+            if @c.ids.to_s.include?(params[:id])
+                @cus=Customer.find(params[:id])
+                erb :'/customers/edit'       
+            else
+                @error = "This is not your customer."
+                redirect '/customers/index'               
+            end
         else
-            redirect '/login'
+            @error = "You must be logged in to perform this function!"
+            erb :'/users/login'
+            # redirect '/login'
         end
 
     end
 
-    post '/customers/show' do
-
-
-    end
-
     patch '/customers/:id' do
-        @c=Customer.find(params[:id])
-        Helpers.user_customer
-        @c.update(name: params[:name], phone: params[:phone], notes: params[:notes])
-        
-        # binding.pry
-        redirect "/customers/#{@c.id}/show"
+        if Helpers.is_logged_in?(session)
+            @user=Helpers.current_user(session)
+            @c=Customer.find(params[:id])
+            # Helpers.user_customer
+            if @c.user != @user
+                redirect "/customers/#{@c.id}/show"     
+            end
+
+            @c.update(name: params[:name], phone: params[:phone], notes: params[:notes])
+            redirect "/customers/#{@c.id}/show"
+        else
+            @error = "You must be logged in to perform this function!"
+            erb :'/users/login'
+            # redirect '/login'
+        end
       end
 
     
     delete '/customers/:id' do
-        @c = Customer.find(params[:id])
-        Helpers.user_customer
-        @c.destroy
-        redirect '/customers'
+        if Helpers.is_logged_in?(session)
+            @c = Customer.find(params[:id])
+            @c.destroy
+            redirect '/customers'
+        else
+            @error = "You must be logged in to perform this function!"
+            erb :'/users/login'
+            # redirect '/login'
+        end
     end
        
  

@@ -1,7 +1,7 @@
 class Helpers
 
     def self.current_user(session)
-        @u = User.find_by(id: session[:user_id])  
+        @user = User.find_by(id: session[:user_id])  
         #currently logged in user from session hash
     end
 
@@ -15,17 +15,20 @@ class Helpers
 
     end
 
-    #TRying to validate user to allow for edit, update, delete actions on information
+   # Trying to validate user to allow for edit, update, delete actions on information
 
    # @c.user == current_user if true then perform action else redirect back to show page
 
-    def self.user_customer
-     if @c.user != current_user
-        redirect "/customers/#{@customers.id}/show"
-        #do something
+    # def self.user_customer
+    #     @c=@user.customers
+    #      # binding.pry
+    #     if !( @c.ids.include?(@user.id))
+    #         @error = "This is not your customer"
+    #         redirect '/customers/index'
+    #         #do something
        
-    end
-    end
+    #     end
+    # end
 
     # username
     # customer

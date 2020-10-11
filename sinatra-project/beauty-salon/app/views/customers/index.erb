@@ -1,6 +1,9 @@
 <br /><h3>Customers List - <%= @user.username %> </h3><h6><a href="/customers/new">Add New Customer</a>  or  <a href="/dashboard/:id">Return to Stylist Dashboard</a></h6><br />
-
+<% if @error %>
+    <p><%= @error %>  Please select from your customer list...</p>
+    <%end%>
 <h6>
+<h7>Note: Attempting to edit customers for other stylists will return you to this page.  Please edit only your customers.</h7><br /><br />
 <% @customers.each do |customer|%>
     <!--<%=customer.name%>-->
     <a href="/customers/<%= customer.id%>/show"><%= customer.name %></a>--<a href="/customers/<%= customer.id %>/edit">Edit</a>
